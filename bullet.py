@@ -1,7 +1,9 @@
 import pygame
 
+
 class Bullet1(pygame.sprite.Sprite):
     """docstring for Bullet1"""
+
     def __init__(self, position):
         super(Bullet1, self).__init__()
 
@@ -21,8 +23,10 @@ class Bullet1(pygame.sprite.Sprite):
         self.rect.left, self.rect.top = position
         self.active = True
 
+
 class Bullet2(pygame.sprite.Sprite):
     """docstring for Bullet2"""
+
     def __init__(self, position):
         super(Bullet2, self).__init__()
 

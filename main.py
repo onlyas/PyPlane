@@ -17,7 +17,6 @@ pygame.display.set_caption('飞机大战 -- Demo')
 
 background = pygame.image.load('images/background.png').convert()
 
-
 # 定义颜色
 BLACK = (0, 0, 0)
 GREEN = (0, 255, 0)
@@ -336,7 +335,7 @@ def main():
                     bullet_supply.active = False
 
             # 发射子弹
-            if not(delay % 10):
+            if not (delay % 10):
                 bullet_sound.play()
                 if is_double_bullet:
                     bullets = bullet2
@@ -408,9 +407,9 @@ def main():
                     # 毁灭
                     if e3_destroy_index == 0:
                         enemy3_down_sound.play()
-                    if not(delay % 2):
+                    if not (delay % 2):
                         screen.blit(each.destroy_images[
-                                    e3_destroy_index], each.rect)
+                                        e3_destroy_index], each.rect)
                         e3_destroy_index = (e3_destroy_index + 1) % 6
                         if e3_destroy_index == 0:
                             enemy3_fly_sound.stop()
@@ -448,9 +447,9 @@ def main():
                     # 毁灭
                     if e2_destroy_index == 0:
                         enemy2_down_sound.play()
-                    if not(delay % 2):
+                    if not (delay % 2):
                         screen.blit(each.destroy_images[
-                                    e2_destroy_index], each.rect)
+                                        e2_destroy_index], each.rect)
                         e2_destroy_index = (e2_destroy_index + 1) % 4
                         if e2_destroy_index == 0:
                             score += 6000
@@ -465,9 +464,9 @@ def main():
                     # 毁灭
                     if e1_destroy_index == 0:
                         enemy1_down_sound.play()
-                    if not(delay % 2):
+                    if not (delay % 2):
                         screen.blit(each.destroy_images[
-                                    e1_destroy_index], each.rect)
+                                        e1_destroy_index], each.rect)
                         e1_destroy_index = (e1_destroy_index + 1) % 4
                         if e1_destroy_index == 0:
                             score += 1000
@@ -491,7 +490,7 @@ def main():
                 # 毁灭
                 if me_destroy_index == 0:
                     me_down_sound.play()
-                if not(delay % 2):
+                if not (delay % 2):
                     screen.blit(me.destroy_images[me_destroy_index], me.rect)
                     me_destroy_index = (me_destroy_index + 1) % 4
                     if me_destroy_index == 0:
@@ -520,7 +519,7 @@ def main():
         elif life_num == 0:
             # 背景音乐停止
             pygame.mixer.music.stop()
-            
+
             # 停止全部音效
             pygame.mixer.stop()
 
@@ -528,7 +527,7 @@ def main():
             pygame.time.set_timer(SUPPLY_TIME, 0)
 
             if not recorded:
-                recorded =True
+                recorded = True
                 # 读取历史最高分
                 with open('record.txt', 'r') as f:
                     record_score = int(f.read())
@@ -541,28 +540,28 @@ def main():
             # 绘制结束界面
             record_score_text = score_font.render("Best : %d" % record_score, True, (255, 255, 255))
             screen.blit(record_score_text, (50, 50))
-            
+
             gameover_text1 = gameover_font.render("Your Score", True, (255, 255, 255))
             gameover_text1_rect = gameover_text1.get_rect()
             gameover_text1_rect.left, gameover_text1_rect.top = \
-                                 (width - gameover_text1_rect.width) // 2, height // 3
+                (width - gameover_text1_rect.width) // 2, height // 3
             screen.blit(gameover_text1, gameover_text1_rect)
-            
+
             gameover_text2 = gameover_font.render(str(score), True, (255, 255, 255))
             gameover_text2_rect = gameover_text2.get_rect()
             gameover_text2_rect.left, gameover_text2_rect.top = \
-                                 (width - gameover_text2_rect.width) // 2, \
-                                 gameover_text1_rect.bottom + 10
+                (width - gameover_text2_rect.width) // 2, \
+                gameover_text1_rect.bottom + 10
             screen.blit(gameover_text2, gameover_text2_rect)
 
             again_rect.left, again_rect.top = \
-                             (width - again_rect.width) // 2, \
-                             gameover_text2_rect.bottom + 50
+                (width - again_rect.width) // 2, \
+                gameover_text2_rect.bottom + 50
             screen.blit(again_image, again_rect)
 
             gameover_rect.left, gameover_rect.top = \
-                                (width - again_rect.width) // 2, \
-                                again_rect.bottom + 10
+                (width - again_rect.width) // 2, \
+                again_rect.bottom + 10
             screen.blit(gameover_image, gameover_rect)
 
             # 检测用户的鼠标操作
@@ -572,24 +571,21 @@ def main():
                 pos = pygame.mouse.get_pos()
                 # 如果用户点击“重新开始”
                 if again_rect.left < pos[0] < again_rect.right and \
-                   again_rect.top < pos[1] < again_rect.bottom:
+                        again_rect.top < pos[1] < again_rect.bottom:
                     # 调用main函数，重新开始游戏
                     main()
                 # 如果用户点击“结束游戏”            
                 elif gameover_rect.left < pos[0] < gameover_rect.right and \
-                     gameover_rect.top < pos[1] < gameover_rect.bottom:
+                        gameover_rect.top < pos[1] < gameover_rect.bottom:
                     # 退出游戏
                     pygame.quit()
-                    sys.exit()   
+                    sys.exit()
 
-
-        
-
-        # 绘制暂停按钮
+                    # 绘制暂停按钮
         screen.blit(paused_image, paused_rect)
 
         # 用于切换图片
-        if not(delay % 11):
+        if not (delay % 11):
             switch_plane = not switch_plane
 
         delay -= 1
@@ -598,6 +594,7 @@ def main():
 
         pygame.display.flip()
         clock.tick(60)
+
 
 if __name__ == '__main__':
     try:
